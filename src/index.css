@@ -1,0 +1,226 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #20596E;
+  --color-primary-hover: #286e88;
+  --color-primary-active: #184656;
+}
+
+@layer base {
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f5f5f7;
+    color: #1d1d1f;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.011em;
+  }
+
+  ::selection {
+    background-color: rgba(32, 89, 110, 0.25);
+    color: #1d1d1f;
+  }
+}
+
+/* Custom scrollbars with Apple subtlety */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* Apple Dropdown Popover Animations */
+@keyframes appleDropdownIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.97) translateY(-3px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes appleDropdownInUpward {
+  0% {
+    opacity: 0;
+    transform: scale(0.97) translateY(3px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.apple-dropdown-menu {
+  animation: appleDropdownIn 0.14s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform-origin: top;
+}
+
+.apple-dropdown-menu-up {
+  animation: appleDropdownInUpward 0.14s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform-origin: bottom;
+}
+
+@keyframes applePopupIn {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.apple-bottom-popup {
+  animation: applePopupIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.print-spacer {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 12mm 15mm;
+  }
+
+  html, body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* Reset outer application wrappers from taking 100vh / extra paddings in print */
+  .min-h-screen {
+    min-height: auto !important;
+  }
+
+  .space-y-6 {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .pb-28 {
+    padding-bottom: 0 !important;
+  }
+
+  .print-spacer {
+    display: block !important;
+  }
+
+  .print-receipt-container {
+    box-shadow: none !important;
+    border: 2px solid #000000 !important;
+    border-radius: 0 !important;
+    padding: 24px !important;
+    width: 100% !important;
+    margin: 0 !important;
+    background: #ffffff !important;
+  }
+
+  /* Modal print unwrap rules so modal prints full width on clean paper without dark overlay */
+  .print-modal-overlay {
+    position: static !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+    overflow: visible !important;
+    max-height: none !important;
+    height: auto !important;
+    width: 100% !important;
+  }
+
+  .print-modal-card {
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
+    background: transparent !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .print-modal-body {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    overflow: visible !important;
+    max-height: none !important;
+    height: auto !important;
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .print-report-container {
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    background: #ffffff !important;
+    display: block !important;
+  }
+
+  .print-report-container table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+
+  .print-report-container thead {
+    display: table-header-group !important;
+  }
+
+  .print-report-container tfoot {
+    display: table-row-group !important;
+  }
+
+  .print-report-container tr {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .print-report-footer {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+}

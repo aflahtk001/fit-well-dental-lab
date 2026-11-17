@@ -1,0 +1,71 @@
+{
+  "name": "dental-lab-billing",
+  "version": "1.0.0",
+  "description": "Fit Well Dental Lab Desktop Billing Software",
+  "main": "electron/main.cjs",
+  "author": "Fit Well Dental Lab",
+  "license": "MIT",
+  "type": "commonjs",
+  "scripts": {
+    "dev:vite": "vite",
+    "dev:electron": "wait-on http://localhost:5173 && cross-env NODE_ENV=development VITE_DEV_SERVER_URL=http://localhost:5173 electron electron/main.cjs",
+    "dev": "concurrently -k \"npm run dev:vite\" \"npm run dev:electron\"",
+    "build:vite": "vite build",
+    "build": "vite build",
+    "start": "electron electron/main.cjs",
+    "dist": "npm run build && electron-builder",
+    "package": "npm run build && electron-builder --win nsis"
+  },
+  "build": {
+    "appId": "com.dentallab.billing",
+    "productName": "Fit Well Dental Lab",
+    "npmRebuild": false,
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "asar": true,
+    "asarUnpack": [
+      "**/node_modules/better-sqlite3/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Fit Well Dental Lab"
+    }
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.8.0",
+    "lucide-react": "^1.73.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.3.0",
+    "autoprefixer": "^10.6.2",
+    "concurrently": "^10.0.7",
+    "cross-env": "^10.1.0",
+    "electron": "^32.2.8",
+    "electron-builder": "^26.18.0",
+    "postcss": "^8.5.33",
+    "tailwindcss": "^3.4.17",
+    "vite": "^8.3.8",
+    "wait-on": "^9.5.1"
+  }
+}
