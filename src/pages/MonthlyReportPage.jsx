@@ -650,15 +650,15 @@ export default function MonthlyReportPage() {
             </div>
           </div>
 
-          {/* Statement Meta (Shows both Doctor and Clinic if connected) */}
-          <div id="report-meta-section" className="grid grid-cols-1 sm:grid-cols-4 gap-4 sm:gap-6 mb-6 pb-6 border-b border-[#e5e5ea] text-sm">
+          {/* Statement Meta (Shows Doctor, Clinic, and Billing Period) */}
+          <div id="report-meta-section" className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-6 pb-6 border-b border-[#e5e5ea] text-sm items-start">
             <div>
               <span className="block text-[11px] font-bold uppercase tracking-wider text-[#86868b] mb-1">
                 Doctor Name
               </span>
               <span className="text-base font-bold text-[#1d1d1f] flex items-center gap-1.5">
                 <Users className="w-4 h-4 text-[#20596E] flex-shrink-0" />
-                <span className="truncate">
+                <span>
                   {filterType === 'doctor'
                     ? selectedName
                     : connectedDoctorName || <span className="text-[#86868b] font-normal italic">— (Facility Account)</span>}
@@ -672,7 +672,7 @@ export default function MonthlyReportPage() {
               </span>
               <span className="text-base font-bold text-[#1d1d1f] flex items-center gap-1.5">
                 <Building2 className="w-4 h-4 text-[#20596E] flex-shrink-0" />
-                <span className="truncate">
+                <span>
                   {filterType === 'clinic'
                     ? selectedName
                     : connectedClinicName || <span className="text-[#86868b] font-normal italic">— (Independent Doctor)</span>}
@@ -680,21 +680,12 @@ export default function MonthlyReportPage() {
               </span>
             </div>
 
-            <div>
+            <div className="sm:text-right">
               <span className="block text-[11px] font-bold uppercase tracking-wider text-[#86868b] mb-1">
                 Billing Period
               </span>
               <span className="text-base font-bold text-[#1d1d1f]">
                 {monthLabel} {selectedYear}
-              </span>
-            </div>
-
-            <div className="sm:text-right">
-              <span className="block text-[11px] font-bold uppercase tracking-wider text-[#86868b] mb-1">
-                Statement Date
-              </span>
-              <span className="text-sm font-semibold text-[#6e6e73]">
-                {new Date().toLocaleDateString()}
               </span>
             </div>
           </div>
@@ -868,7 +859,15 @@ export default function MonthlyReportPage() {
           <div id="report-print-spacer" className="print-spacer" style={{ height: '0px' }}></div>
 
           {/* Fit Well Statement Sign-off */}
-          <div id="report-print-footer" className="print-report-footer mt-8 pt-6 border-t border-[#e5e5ea] flex justify-end">
+          <div id="report-print-footer" className="print-report-footer mt-8 pt-6 border-t border-[#e5e5ea] flex flex-row items-end justify-between gap-6">
+            <div className="text-left">
+              <span className="block text-[11px] font-bold uppercase tracking-wider text-[#86868b] mb-1">
+                Statement Date
+              </span>
+              <span className="text-sm font-semibold text-[#1d1d1f]">
+                {new Date().toLocaleDateString()}
+              </span>
+            </div>
             <div className="text-right">
               <div className="w-48 border-b border-[#1d1d1f] pb-1 mb-1 ml-auto"></div>
               <p className="text-[11px] font-bold uppercase tracking-wider text-[#1d1d1f]">
