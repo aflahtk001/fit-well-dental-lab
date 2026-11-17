@@ -868,14 +868,9 @@ export default function MonthlyReportPage() {
           <div id="report-print-spacer" className="print-spacer" style={{ height: '0px' }}></div>
 
           {/* Fit Well Statement Sign-off */}
-          <div id="report-print-footer" className="print-report-footer mt-8 pt-6 border-t border-[#e5e5ea] flex flex-col sm:flex-row items-center sm:items-end justify-between gap-6">
-            <div className="text-xs text-[#86868b] text-center sm:text-left">
-              <p className="font-semibold text-[#1d1d1f]">FIT WELL Dental Lab</p>
-              <p className="mt-0.5">Anna Nagar, Madurai - 625 020. | Mob: 9894626727, 9043559065</p>
-              <p className="mt-0.5 text-[11px] text-[#86868b]">Official Accounts & Billing Statement</p>
-            </div>
-            <div className="text-center sm:text-right">
-              <div className="w-48 border-b border-[#1d1d1f] pb-1 mb-1"></div>
+          <div id="report-print-footer" className="print-report-footer mt-8 pt-6 border-t border-[#e5e5ea] flex justify-end">
+            <div className="text-right">
+              <div className="w-48 border-b border-[#1d1d1f] pb-1 mb-1 ml-auto"></div>
               <p className="text-[11px] font-bold uppercase tracking-wider text-[#1d1d1f]">
                 For FIT WELL DENTAL LAB
               </p>
